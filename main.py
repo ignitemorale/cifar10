@@ -71,7 +71,7 @@ print('==> Building model..')
 net = SimpleDLA()
 net = net.to(device)
 
-# Set net name as str
+# Set path name same as model name in str
 netname = 'SimpleDLA'
 
 if device == 'cuda':
