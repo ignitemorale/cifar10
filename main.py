@@ -69,6 +69,8 @@ print('==> Building model..')
 # net = EfficientNetB0()
 # net = RegNetX_200MF()
 net = SimpleDLA()
+netname = str(net)
+netname = netname[:-2]
 net = net.to(device)
 if device == 'cuda':
     net = torch.nn.DataParallel(net)
@@ -144,7 +146,7 @@ def test(epoch):
         }
         if not os.path.isdir('checkpoint'):
             os.mkdir('checkpoint')
-        torch.save(state, './checkpoint/ckpt.pth')
+        torch.save(state, f'./checkpoint/{netname}.pth')
         best_acc = acc
         
 
