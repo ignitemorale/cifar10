@@ -151,6 +151,8 @@ def test(epoch):
         torch.save(state, f'./checkpoint/{netname}.pth')
         best_acc = acc
         
+        
+        
 
 
 for epoch in range(start_epoch, start_epoch+200):
