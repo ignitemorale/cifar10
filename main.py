@@ -69,9 +69,11 @@ print('==> Building model..')
 # net = EfficientNetB0()
 # net = RegNetX_200MF()
 net = SimpleDLA()
-netname = str(net)
-netname = netname[:-2] if netname[:2]!='VGG' else netname[:3]
 net = net.to(device)
+
+# Set net name as str
+netname = 'SimpleDLA'
+
 if device == 'cuda':
     net = torch.nn.DataParallel(net)
     cudnn.benchmark = True
