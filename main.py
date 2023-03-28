@@ -70,7 +70,7 @@ print('==> Building model..')
 # net = RegNetX_200MF()
 net = SimpleDLA()
 netname = str(net)
-netname = netname[:-2]
+netname = netname[:-2] if netname[:2]!='VGG' else netname[:3]
 net = net.to(device)
 if device == 'cuda':
     net = torch.nn.DataParallel(net)
