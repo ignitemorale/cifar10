@@ -150,7 +150,7 @@ def test(epoch):
             os.mkdir('checkpoint')
         torch.save(state, f'./checkpoint/{netname}.pth')
         best_acc = acc
-        net.module.data
+        net.module.data()
         
         
         
