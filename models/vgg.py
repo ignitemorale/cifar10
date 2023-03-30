@@ -19,6 +19,7 @@ class VGG(nn.Module):
         self.classifier = nn.Linear(512, 10)
 
     def forward(self, x):
+        global bclf
         out = self.features(x)
         out = out.view(out.size(0), -1)
         bclf=out
@@ -39,9 +40,16 @@ class VGG(nn.Module):
         layers += [nn.AvgPool2d(kernel_size=1, stride=1)]
         return nn.Sequential(*layers)
     
-    def data(bclf):
-        return bclf
-
+    def data():
+        global bclf
+        bs=bclf.size()[1]
+        fp=open('train.txt','w')
+        for i in range(0,bs):
+            if i != bs-1:
+                fp.write('{:.25f}\n'.format(bclf[0,i]))
+            else:
+                fp.write('{:.25f}'.format(bclf[0,i]))
+        fp.close()
 
 def test():
     net = VGG('VGG11')
