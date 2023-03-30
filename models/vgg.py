@@ -38,9 +38,6 @@ class VGG(nn.Module):
                 in_channels = x
         layers += [nn.AvgPool2d(kernel_size=1, stride=1)]
         return nn.Sequential(*layers)
-    
-    def before(bclf):
-        return bclf
 
 
 def test():
