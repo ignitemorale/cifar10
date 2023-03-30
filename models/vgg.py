@@ -12,6 +12,7 @@ cfg = {
 
 
 class VGG(nn.Module):
+    global bclf
     def __init__(self, vgg_name):
         super(VGG, self).__init__()
         self.features = self._make_layers(cfg[vgg_name])
@@ -20,6 +21,7 @@ class VGG(nn.Module):
     def forward(self, x):
         out = self.features(x)
         out = out.view(out.size(0), -1)
+        bclf=out
         out = self.classifier(out)
         return out
 
@@ -36,10 +38,13 @@ class VGG(nn.Module):
                 in_channels = x
         layers += [nn.AvgPool2d(kernel_size=1, stride=1)]
         return nn.Sequential(*layers)
+    
+    def before(bclf):
+        return bclf
 
 
 def test():
-    net = VGG('VGG16')
+    net = VGG('VGG11')
     x = torch.randn(2,3,32,32)
     y = net(x)
     print(y.size())
