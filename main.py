@@ -69,6 +69,7 @@ print('==> Building model..')
 # net = EfficientNetB0()
 # net = RegNetX_200MF()
 net = VGG('VGG16')
+netdata = net
 net = net.to(device)
 
 # Set path name same as model name in str
@@ -150,7 +151,7 @@ def test(epoch):
             os.mkdir('checkpoint')
         torch.save(state, f'./checkpoint/{netname}.pth')
         best_acc = acc
-        net.data()
+        netdata.data()
         
         
         
