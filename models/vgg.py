@@ -43,13 +43,21 @@ class VGG(nn.Module):
     def data():
         global bclf
         bs=bclf.size()[1]
-        fp=open('train.txt','w')
+        fp1=open('train_lable.txt','w')
         for i in range(0,bs):
             if i != bs-1:
-                fp.write('{:.25f}\n'.format(bclf[0,i]))
+                fp1.write('{:.25f}\n'.format(bclf[0,i]))
             else:
-                fp.write('{:.25f}'.format(bclf[0,i]))
-        fp.close()
+                fp1.write('{:.25f}'.format(bclf[0,i]))
+        fp1.close()
+        fp2=open('train_patch.txt','w')
+        for i in range(0,bs):
+            if i != bs-1:
+                fp2.write('{:.25f}\n'.format(bclf[1,i]))
+            else:
+                fp2.write('{:.25f}'.format(bclf[1,i]))
+        fp2.close()
+
 
 def test():
     net = VGG('VGG11')
