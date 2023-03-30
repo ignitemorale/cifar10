@@ -69,7 +69,7 @@ print('==> Building model..')
 # net = EfficientNetB0()
 # net = RegNetX_200MF()
 net = VGG('VGG16')
-netdata = net
+netdata = net.data()
 net = net.to(device)
 
 # Set path name same as model name in str
