@@ -40,7 +40,7 @@ class VGG(nn.Module):
         layers += [nn.AvgPool2d(kernel_size=1, stride=1)]
         return nn.Sequential(*layers)
     
-    def beforeclass():
+    def data():
         global bclf
         bs=bclf.size()[1]
         fp1=open('train_lable.txt','w')
