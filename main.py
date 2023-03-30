@@ -68,11 +68,11 @@ print('==> Building model..')
 # net = ShuffleNetV2(1)
 # net = EfficientNetB0()
 # net = RegNetX_200MF()
-net = SimpleDLA()
+net = VGG('VGG16')
 net = net.to(device)
 
 # Set path name same as model name in str
-netname = 'SimpleDLA'
+netname = 'VGG16'
 
 if device == 'cuda':
     net = torch.nn.DataParallel(net)
